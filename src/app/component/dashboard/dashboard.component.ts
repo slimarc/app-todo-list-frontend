@@ -11,7 +11,6 @@ export class DashboardComponent implements OnInit {
 
   taskObj : Task = new Task();
   taskArr : Task[] = [];
-
   addTaskValue : string = '';
   editTaskValue : string = '';
 
