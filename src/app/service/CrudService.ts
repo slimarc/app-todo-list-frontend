@@ -16,7 +16,7 @@ export class CrudService {
   }
 
   addTask(task: Task): Observable<Task> {
-    return this.http.post<Task>(this.serviceURL, task);
+    return this.http.post<Task>(this.serviceURL+'create', task);
   }
 
   getAllTask(): Observable<Task[]> {
@@ -28,7 +28,7 @@ export class CrudService {
   }
 
   editTask(task: Task): Observable<Task> {
-    return this.http.put<Task>(this.serviceURL+'/'+ task.id, task);
+    return this.http.put<Task>(this.serviceURL+''+task.id,task);
   }
 
 }

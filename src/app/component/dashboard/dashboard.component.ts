@@ -27,12 +27,12 @@ export class DashboardComponent implements OnInit {
     this.crudService.getAllTask().subscribe(res => {
       this.taskArr = res;
     }, err => {
-      alert("Unable to get list of tasks");
+      alert("Não foi possível encontrar a lista de tarefas");
     });
   }
 
   addTask() {
-    this.taskObj.task_name = this.addTaskValue;
+    this.taskObj.Titulo = this.addTaskValue;
     this.crudService.addTask(this.taskObj).subscribe(res => {
       this.ngOnInit();
       this.addTaskValue = '';
@@ -42,11 +42,11 @@ export class DashboardComponent implements OnInit {
   }
 
   editTask() {
-    this.taskObj.task_name = this.editTaskValue;
+    this.taskObj.Titulo = this.editTaskValue;
     this.crudService.editTask(this.taskObj).subscribe(res => {
       this.ngOnInit();
     }, err=> {
-      alert("Failed to update task");
+      alert("Falha na atualização de tarefa");
     })
   }
 
@@ -54,13 +54,13 @@ export class DashboardComponent implements OnInit {
     this.crudService.deleteTask(etask).subscribe(res => {
       this.ngOnInit();
     }, err=> {
-      alert("Failed to delete task");
+      alert("Falha em remover tarefa");
     });
   }
 
   call(etask : Task) {
     this.taskObj = etask;
-    this.editTaskValue = etask.task_name;
+    this.editTaskValue = etask.Titulo;
   }
 
 

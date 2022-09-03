@@ -1,7 +1,7 @@
 import { Task } from './task';
 
 describe('Task', () => {
-  it('should create an instance', () => {
+  it('criando uma instancia', () => {
     expect(new Task()).toBeTruthy();
   });
 });
