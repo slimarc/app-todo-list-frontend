@@ -19,12 +19,13 @@
                 <h4 class="text-primary mt-4"></h4>
 
                 <div style="overflow-y: auto; height: 350px;">
-                    <div class="m-3" *ngFor="let task of taskArr">
+                    <div class="m-3" *ngFor="let task of taskArrey">
                         <div class="p-2 shadow border" id="tasks" >
                             <div class="input-group row ps-3" >
                                 <div class="card col-md-10 border-0"> {{task.Titulo}} </div>
-                                <button class="btn btn-outline-primary col me-2" data-bs-toggle="modal" type="button" data-bs-target="#exampleModal" (click)="call(task)" >e</button>
-                                <div class="btn btn-outline-danger col" (click)="deleteTask(task)" >X</div>
+                                <button class="btn btn-outline-primary col me-2" data-bs-toggle="modal" type="button" data-bs-target="#exampleModal" (click)="call(task)">E</button>
+                                <div class="btn btn-outline-danger col" (click)="deleteTask(task)">X</div>                                     
+                                <input type="checkbox" (click)="completTask()" value="true">
                             </div>
                         </div>
                     </div>

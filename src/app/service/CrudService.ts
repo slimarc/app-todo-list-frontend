@@ -9,26 +9,29 @@ import { Task } from '../model/task';
 })
 export class CrudService {
 
-  serviceURL: string;
+ serviceURL: string;
 
   constructor(private http: HttpClient) {
     this.serviceURL = "http://localhost:8000/api-auth/";
   }
 
-  addTask(task: Task): Observable<Task> {
-    return this.http.post<Task>(this.serviceURL+'create', task);
-  }
-
   getAllTask(): Observable<Task[]> {
     return this.http.get<Task[]>(this.serviceURL);
   }
-
-  deleteTask(task: Task): Observable<Task> {
-    return this.http.delete<Task>(this.serviceURL + 'delete/' + task.id);
+  
+  addTask(task: Task): Observable<Task> {
+    return this.http.post<Task>(this.serviceURL+'create', task);
   }
 
   editTask(task: Task): Observable<Task> {
     return this.http.put<Task>(this.serviceURL+''+task.id,task);
   }
 
+  completTask(task: Task): Observable<Task> {
+    return this.http.put<Task>(this.serviceURL+''+task.id,task);
+  }
+
+  deleteTask(task: Task): Observable<Task> {
+    return this.http.delete<Task>(this.serviceURL + 'delete/' + task.id);
+  }
 }

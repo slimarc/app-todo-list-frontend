@@ -1,5 +1,5 @@
-export class Task {
+export class Task  {
     id : number = 0;
     Titulo : string = '';
-    Completado : boolean = false;
+    Completado : Boolean = false;    
 }
