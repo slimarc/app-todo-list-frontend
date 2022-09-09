@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Task } from 'src/app/model/task';
 import { CrudService } from "src/app/service/CrudService";
 
@@ -14,14 +13,14 @@ export class DashboardComponent implements OnInit {
   taskArrey : Task[] = [];
   addTaskValue : string = ''; 
   editTaskValue : string = '';
-  todo: any;
+  completeTaskValue : boolean = false;
 
   constructor(private crudService : CrudService) { }
 
   ngOnInit(): void {
     this.editTaskValue = '';
     this.addTaskValue = '';
-    this.todo = Boolean.valueOf();
+    this.completeTaskValue = true;
     this.taskObj = new Task();
     this.taskArrey = [];
     this.getAllTask();
@@ -55,11 +54,11 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  completTask() {
-    this.todo.Completado = this.todo; 
-    this.crudService.completTask(this.todo).subscribe(res => {
+  completTask(etask : Task) {
+    this.taskObj.Completado = this.completeTaskValue; 
+    this.crudService.completTask(this.taskObj).subscribe(res => {
       this.ngOnInit();
-      console.log(this.todo.Completado);
+      this.completeTaskValue = true;
     }, err=> {
       alert("Falha na conclusão de tarefa");
     })
@@ -76,6 +75,7 @@ export class DashboardComponent implements OnInit {
   call(etask : Task) {
     this.taskObj = etask;
     this.editTaskValue = etask.Titulo;
+    this.completeTaskValue = etask.Completado;
   }
 
 }
