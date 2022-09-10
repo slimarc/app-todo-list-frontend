@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.editTaskValue = '';
     this.addTaskValue = '';
-    this.completeTaskValue = true;
+    this.completeTaskValue = false;
     this.taskObj = new Task();
     this.taskArrey = [];
     this.getAllTask();
@@ -54,22 +54,21 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  completTask(etask : Task) {
-    this.taskObj.Completado = this.completeTaskValue; 
-    this.crudService.completTask(this.taskObj).subscribe(res => {
-      this.ngOnInit();
-      this.completeTaskValue = true;
-    }, err=> {
-      alert("Falha na conclusão de tarefa");
-    })
-  }
-
   deleteTask(etask : Task) {
     this.crudService.deleteTask(etask).subscribe(res => {
       this.ngOnInit();
     }, err=> {
       alert("Falha em remover tarefa");
     });
+  }
+
+  completTask() {
+    this.taskObj.Completado = this.completeTaskValue; 
+    this.crudService.completTask(this.taskObj).subscribe(res => {
+      this.ngOnInit();
+    }, err=> {
+      alert("Falha na conclusão de tarefa");
+    })
   }
 
   call(etask : Task) {
