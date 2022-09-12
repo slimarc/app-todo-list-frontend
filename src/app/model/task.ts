@@ -1,6 +1,5 @@
-
-export class Task  {
-    id : number = 0;
-    Titulo : string = '';
+export class Task{
+    id : number | undefined;
+    Titulo : string | undefined;
     Completado : boolean = false;
 } 

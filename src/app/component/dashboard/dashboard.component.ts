@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Task } from 'src/app/model/task';
 import { CrudService } from "src/app/service/CrudService";
 
@@ -11,21 +11,21 @@ export class DashboardComponent implements OnInit {
 
   taskObj : Task = new Task();
   taskArrey : Task[] = [];
-  addTaskValue : string = ''; 
-  editTaskValue : string = '';
+  addTaskValue : string | undefined; 
+  editTaskValue : string | undefined;
   completeTaskValue : boolean = false;
 
   constructor(private crudService : CrudService) { }
 
   ngOnInit(): void {
-    this.editTaskValue = '';
-    this.addTaskValue = '';
+    this.editTaskValue = undefined;
+    this.addTaskValue = undefined;
     this.completeTaskValue = false;
     this.taskObj = new Task();
     this.taskArrey = [];
     this.getAllTask();
   }
-  
+
   getAllTask() {
     this.crudService.getAllTask().subscribe(res => {
       this.taskArrey = res;
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
     this.taskObj.Titulo = this.addTaskValue;
     this.crudService.addTask(this.taskObj).subscribe(res => {
       this.ngOnInit();
-      this.addTaskValue = '';
+      this.addTaskValue = undefined;
     }, err => {
       alert("Insira a tarefa no campo ao lado");
     })
@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  completTask() {
+ completTask() {
     this.taskObj.Completado = this.completeTaskValue; 
     this.crudService.completTask(this.taskObj).subscribe(res => {
       this.ngOnInit();
