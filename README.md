@@ -12,6 +12,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `./start.sh` to install application dependencies and start server at `http://localhost:4200/`.
 
-## Project video
+## Links
 
-- [To-Do List Application](https://www.youtube.com/watch?v=MjJHiv15Tts)
+- [Video To-Do List Application](https://www.youtube.com/watch?v=MjJHiv15Tts)
+- [Banckend repository](https://github.com/slimarc/app-todo-list-backend)
